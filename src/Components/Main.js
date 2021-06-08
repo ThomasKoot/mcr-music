@@ -8,7 +8,6 @@ import MainPhoto from './MainPhoto';
 import MainPhotoMobile from './MainPhotoMobile';
 import Social from './Social';
 
-
 function Main(props) {
 
 	const [isMobile, setIsMobile] = useState(window.matchMedia('(max-width: 600px)').matches)

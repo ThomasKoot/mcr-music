@@ -9,7 +9,7 @@ const Social = forwardRef((props, ref) => {
 		"https://www.instagram.com/magic_carpet_riders/",
 		"https://twitter.com/RidersCarpet",
 		"https://open.spotify.com/artist/34iyDqhMLFcEbJCh4EAbO0",
-		"email@mcr-music.com"
+		"mailto:info@mcr-music.nl"
 	]
 
 	return (
@@ -22,7 +22,7 @@ const Social = forwardRef((props, ref) => {
 					{urls.map(url => {
 						return (
 							<GridItem colSpan={[3,2,2,1]} key={url} justifySelf="center" my={4}>
-								<SocialIcon url={url} />
+								<SocialIcon url={url} target="blank"/>
 							</GridItem>
 						)
 					})}
