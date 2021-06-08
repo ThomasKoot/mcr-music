@@ -17,7 +17,7 @@ const releases = [
 const Discography = forwardRef((props, ref) => {
 
 	return (
-		<Grid templateColumns="repeat(6, 1fr)" gap={6} alignItems="center" mx={8} my={20} ref={ref} >
+		<Grid templateColumns="repeat(6, 1fr)" gap={6} alignItems="center" ref={ref} >
 			<GridItem colSpan={[6, 4]} order={[2,1]}>
 				<Grid templateColumns="repeat(6, 1fr)" gap={4}>
 					{
@@ -25,12 +25,12 @@ const Discography = forwardRef((props, ref) => {
 							return (
 									<>
 									<GridItem colSpan={[3,4]}>
-										<Text w="full" textAlign="right">
+										<Text textAlign="right">
 											{r.title}
 										</Text>
 									</GridItem>
 									<GridItem colSpan={[3,2]}>
-										<Text w="full" textAlign="center">{r.releaseDate}</Text>
+										<Text textAlign="center">{r.releaseDate}</Text>
 									</GridItem>
 									</>
 							)

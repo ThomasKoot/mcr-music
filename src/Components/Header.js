@@ -20,22 +20,8 @@ function Header(props) {
 				<Img
 					boxSize={200}
 					src={mcrLogo} alt='mcr-logo' />
-				<Flex w={'100%'} justify="flex-end" >
-					<Box display={["none", "block"]} mr={[4,null,null,8,10]}>
+				<Flex w={'100%'} justify="flex-end" flexDirection={["column", "row"]}>
 						{navButtons.map(text => <NavButton text={text} key={text} onClick={props.onClick}/>)}
-					</Box>
-					<Box display={["block", "none"]} mr={4}>
-						<Menu >
-							<MenuButton
-								as={IconButton}
-								icon={<HamburgerIcon />}
-								aria-label="Options"
-							/>
-							<MenuList>
-								{navButtons.map(text => <MenuItem key={text} onClick={props.onClick(text)}>{text}</MenuItem>)}
-							</MenuList>
-						</Menu>
-					</Box>
 				</Flex>
 			</Flex>
 		</>

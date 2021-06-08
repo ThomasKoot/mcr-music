@@ -1,114 +1,13 @@
+.main {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .App {
   display: 'flex';
   flex-direction: 'row';
   max-width: 1400px;
-}
-
-div.footer {
-  flex-grow: 1;
-}
-
-div.mainPhoto {
-  height: 350px;
+  user-select: none;
   overflow: hidden;
 }
-
-img.mainPhoto {
-  overflow: hidden;
-  min-width: 100%;
-}
-
-@media only screen and (max-width: 900px) {
-  img.mainPhoto {
-    position: relative;
-    left: calc((900px - 100vw) * -.6)
-  }
-}
-
-img.mainPhotoMobile {
-  width: 100%;
-}
-
-
-div.headerFiller {
-  height: 120px;
-}
-
-div.header {
-  width: 100%;
-  height: 120px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: black;
-}
-
-img.logo {
-  margin-left: 40px;
-  height: 100px;
-}
-
-div.navContainer {
-  justify-content: flex-end;
-  display: flex;
-  margin-right: 40px;
-  flex-grow: 1;
-  font-weight: lighter;
-}
-
-div.content {
-  margin: 80px;
-  display: flex;
-}
-
-h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30%;
-}
-
-p {
-  font-size: small;
-  width: 70%;
-  color: grey;
-}
-
-div.crane {
-  overflow: hidden;
-  height: 200px;
-}
-
-img.crane {
-  width: 100%;
-}
-
-div.footer {
-  background-color: black;
-  height: 120px;
-}
-
-h2.navText {
-  color: white;
-  cursor: pointer;
-}
-
-div.navBox {
-  margin-left: 40px;
-}
-
-hr.navText {
-  color: white;
-  transform: scaleX(0);
-  border-width: 1.5px;
-  border-radius: 2px;
-  border-style: solid;
-  transition: transform .3s;
-}
-
-.navText:hover ~ hr.navText {
-  transform: scaleX(1);
-  color: white;
-}
-
 

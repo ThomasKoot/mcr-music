@@ -6,6 +6,7 @@ import photoD from '../assets/gallery_photos/DSC06682.jpg'
 import photoE from '../assets/gallery_photos/DSC06754.jpg'
 import photoF from '../assets/gallery_photos/DSC06675.jpg'
 import { Box, Flex, Heading, Img } from '@chakra-ui/react';
+import { useDrag } from 'react-use-gesture';
 
 const Gallery = forwardRef((props, ref) =>  {
 
@@ -13,69 +14,41 @@ const Gallery = forwardRef((props, ref) =>  {
 	const [phase, setPhase] = useState(0);
 	const [phaseOffset, setPhaseOffset] = useState(0);
 	const phaseSize = 360/photos.length
+	const bind = useDrag(params => {
+		console.log(params.vxvy);
+		setPhase(params.offset[0])
+	})
 
 	function handleRotate(evt) {
-		const anchor = evt.type === "touchstart" ? evt.touches[0].screenX : evt.screenX
-		const handleDrag = setupDragHandler(anchor)
 		let tempPhase = 0
 
-		function smoothToZero(x, duration, callback) {
-			const timestamp = performance.now();
-			function step(t) {
-				const elapsed = t - timestamp;
-				const percentage = ((duration - elapsed) / duration)
-				if (percentage > 0) {
-					requestAnimationFrame(step)
-					callback(Math.max(0, percentage) * x)
-				} else {
-					callback(0)
-				}
-			}
-			step(performance.now())
-		}
+		// function smoothToZero(x, duration, callback) {
+		// 	const timestamp = performance.now();
+		// 	function step(t) {
+		// 		const elapsed = t - timestamp;
+		// 		const percentage = ((duration - elapsed) / duration)
+		// 		if (percentage > 0) {
+		// 			requestAnimationFrame(step)
+		// 			callback(Math.max(0, percentage) * x)
+		// 		} else {
+		// 			callback(0)
+		// 		}
+		// 	}
+		// 	step(performance.now())
+		// }
 		
-
-		function reset() {
-			const rest = (tempPhase % phaseSize)
-			const toSnap = Math.abs(rest) < .5 * phaseSize ? -rest :
-				rest > 0 ? phaseSize - rest : -(phaseSize - Math.abs(rest))
-			console.log(toSnap)
-			setPhase(prev => Math.round((prev + tempPhase) / phaseSize) * phaseSize)
-			setPhaseOffset(0)
-			window.removeEventListener('mousemove', handleDrag)
-			window.removeEventListener('mouseup', reset)
-			window.removeEventListener('touchmove', handleDrag)
-			window.removeEventListener('touchend', reset)
-			smoothToZero(-toSnap, 300, val => setPhaseOffset(val))
-		}
-
-		if (evt.type === "touchstart") {
-			window.addEventListener('touchmove', handleDrag)
-			window.addEventListener('touchend', reset)
-		} else {
-			evt.preventDefault();
-			window.addEventListener('mousemove', handleDrag)
-			window.addEventListener('mouseup', reset)
-		}
-		
-		function setupDragHandler(anchor) {
-			return function (e) {
-				e.preventDefault();
-				const x = e.type === "touchmove" ? e.touches[0].screenX : e.screenX
-				console.log(x)
-				tempPhase = -(anchor - x) *.4;
-				setPhaseOffset(tempPhase);
-			}
-		}
 	}
 
 	return (
 
 	<Flex w="full" justifyContent="center" flexDirection="column" alignItems="center" ref={ref}>
 		<Heading>Gallery</Heading>
-		<Flex justifyContent="center" w={'full'} position="relative" overflow="hidden">
+		<Flex justifyContent="center" 
+			w={'full'} style={{touchAction: "pan-y"}}
+			position="relative" 
+			overflow="hidden" {...bind()}>
 			<Box flexGrow={1} bg="white" opacity=".9" zIndex={3}></Box>
-			<Box w={334} h={500} position="relative" onMouseDown={handleRotate} onTouchStart={handleRotate}
+			<Box w={334} h={500} position="relative"
 				style={{
 					perspective:"2000px",
 					transform: 'scale(.6)'
@@ -86,6 +59,7 @@ const Gallery = forwardRef((props, ref) =>  {
 					const z = angle < 90 || angle > 270 ? 2 : 1
 					return <Img 
 						position="absolute"
+						pointerEvents="none"
 						zIndex={z}
 						key={i}
 						src={photo} 

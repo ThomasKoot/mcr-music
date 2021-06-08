@@ -45,7 +45,7 @@ function Main(props) {
 			<Bio ref={elements.about}/>
 			<Gallery ref={elements.gallery}/>
 			<Discography ref={elements.discography}/>
-			<Footer />
+			<Footer /> 
 		</>
 	)
 }
