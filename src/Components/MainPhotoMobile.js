@@ -1,11 +1,12 @@
+import { Img } from '@chakra-ui/react';
 import React from 'react';
-import main_photo_mobile from '../assets/main_photo_mobile.jpeg'
+import main_photo_mobile from '../assets/main_photo_mobile.jpg'
 
 function MainPhotoMobile(props) {
 
 	return (
 		<div >
-			<img className="mainPhotoMobile" src={main_photo_mobile} alt="magic carpet riders" />
+			<Img w="full" src={main_photo_mobile} alt="magic carpet riders" />
 		</div>
 	)
 

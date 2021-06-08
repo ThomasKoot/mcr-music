@@ -1,14 +1,15 @@
+import { Box, Flex } from '@chakra-ui/react';
 import './App.css';
 import Main from './Components/Main';
 
 function App() {
   
   return (
-    <div className="main">
-      <div className="App">
-        <Main />
-      </div>
-    </div>
+    <Flex justify="center" w="full" bg="white">
+        <div className="App">
+          <Main />
+        </div>
+    </Flex>
   );
 }
 

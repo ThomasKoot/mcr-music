@@ -1,6 +1,6 @@
 import { Box, Img } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import mainPhoto from '../assets/DSC06644.jpeg'
+import mainPhoto from '../assets/DSC06644.jpg'
 
 function MainPhoto(props) {
 

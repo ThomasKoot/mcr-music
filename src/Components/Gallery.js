@@ -10,13 +10,13 @@ import { useDrag } from 'react-use-gesture';
 
 const Gallery = forwardRef((props, ref) =>  {
 
-	const photos =[photoA, photoB, photoC, photoD, photoE, photoF]
+	const photos = [photoA, photoB, photoC, photoD, photoE, photoF]
 	const [phase, setPhase] = useState(0);
 	const [phaseOffset, setPhaseOffset] = useState(0);
 	const phaseSize = 360/photos.length
 	const bind = useDrag(params => {
 		console.log(params.vxvy);
-		setPhase(params.offset[0])
+		setPhase(params.offset[0] * .6)
 	})
 
 	function handleRotate(evt) {
@@ -47,7 +47,7 @@ const Gallery = forwardRef((props, ref) =>  {
 			w={'full'} style={{touchAction: "pan-y"}}
 			position="relative" 
 			overflow="hidden" {...bind()}>
-			<Box flexGrow={1} bg="white" opacity=".9" zIndex={3}></Box>
+			<Box flexGrow={1} bg="rgb(235,240,246)" opacity=".9" zIndex={3}></Box>
 			<Box w={334} h={500} position="relative"
 				style={{
 					perspective:"2000px",
@@ -67,7 +67,7 @@ const Gallery = forwardRef((props, ref) =>  {
 				})
 			}
 			</Box>
-			<Box flexGrow={1} bg="white" opacity=".9" zIndex={3}></Box>
+			<Box flexGrow={1} bg="rgb(235,240,246)" opacity=".9" zIndex={3}></Box>
 		</Flex>
 	</Flex>
 	

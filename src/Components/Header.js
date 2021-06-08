@@ -1,5 +1,5 @@
-import { HamburgerIcon } from '@chakra-ui/icons';
-import { Box, Flex, IconButton, Img, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+
+import { Flex, Img, useBreakpoint } from '@chakra-ui/react';
 import React from 'react';
 import mcrLogo from '../assets/mcr-logo.png'
 
@@ -14,14 +14,21 @@ const navButtons = [
 
 function Header(props) {
 
+	const breakpoint = useBreakpoint();
+
 	return (<>
-			<Flex align='center' bg={"black"} 
+			<Flex align='center' bg={"black"} justify="space-between"
 				width='100%'>
 				<Img
-					boxSize={200}
+					boxSize={[150, 200]}
 					src={mcrLogo} alt='mcr-logo' />
-				<Flex w={'100%'} justify="flex-end" flexDirection={["column", "row"]}>
-						{navButtons.map(text => <NavButton text={text} key={text} onClick={props.onClick}/>)}
+				<Flex justify="flex-end" flexDirection={["column", null ,"row"]} mr={[2,6]}>
+						{navButtons.map(text => <NavButton 
+							text={text} 
+							key={text}
+							onClick={props.onClick}
+							size={["base", "sm"].includes(breakpoint) ? "sm" : "md"}
+						/>)}
 				</Flex>
 			</Flex>
 		</>

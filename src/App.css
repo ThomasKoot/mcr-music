@@ -1,13 +1,9 @@
-.main {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 .App {
   display: 'flex';
   flex-direction: 'row';
   max-width: 1400px;
   user-select: none;
   overflow: hidden;
+  background-color: rgb(235,240,246);
 }
 
