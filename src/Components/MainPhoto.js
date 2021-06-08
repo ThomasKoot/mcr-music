@@ -1,6 +1,6 @@
 import { Box, Img, useBreakpoint } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import mainPhoto from '../assets/DSC06709.jpeg'
+import mainPhoto from '../assets/DSC06709.jpg'
 
 function MainPhoto(props) {
 
